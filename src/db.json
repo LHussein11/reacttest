@@ -1,0 +1,28 @@
+{
+    "chapters": [
+      {
+        "chapterNr": "Chapter 1",
+        "Lessons": [
+          { "LessonNr": "Lesson 1" },
+          { "LessonNr": "Lesson 2" },
+          { "LessonNr": "Lesson 3" },
+          { "LessonNr": "Lesson 4" },
+          { "LessonNr": "Lesson 5" }
+        ]
+      },
+      {
+        "chapterNr": "Chapter 2",
+        "Lessons": [
+          { "LessonNr": "En test lektion" },
+          { "LessonNr": "En test lektion" },
+          { "LessonNr": "En test lektion" },
+          { "LessonNr": "En test lektion" },
+          { "LessonNr": "En test lektion" }
+        ]
+      },
+      { "chapterNr": "Chapter 3" },
+      { "chapterNr": "Chapter 4" },
+      { "chapterNr": "Chapter 5" }
+    ]
+  }
+  
