@@ -10,6 +10,9 @@ function Landing() {
   const [lessonData, setLessonData] = useState([]);
 
   function openLesson(lessonInput) {
+      if(lessonInput === undefined){
+          return null
+      }
     console.log(lessonInput);
     return setLessonData(lessonInput);
   }
@@ -19,7 +22,7 @@ function Landing() {
       let newLessons = dataEl.Lessons?.map((lesson) => {
         let lessonsRender = (
           <div>
-            <h2>lesson.LessonNr</h2>
+            <h2>{lesson.LessonNr}</h2>
           </div>
         );
         return lessonsRender;
