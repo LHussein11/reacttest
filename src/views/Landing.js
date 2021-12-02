@@ -7,6 +7,7 @@ import data from "../db.json";
 
 function Landing() {
     const [chapterNr, setChapterNr] = useState([]);
+    const [lessonsData, setLessonsData] = useState([]);
 
     async function chaptersData() {
         data.chapters.map(chapter => {
@@ -21,13 +22,13 @@ function Landing() {
     }, []);
 
     function chapterClicked(a){
-        console.log(a);
+        setLessonsData(a)
     }
 
     return (
     <div className="container">
       <Chapters chapterClicked={chapterClicked} getChapterData={chapterNr}/>
-      <Lessons />
+      <Lessons lessons={lessonsData}/>
     </div>
   );
 }
