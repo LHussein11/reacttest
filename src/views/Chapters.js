@@ -1,18 +1,33 @@
 import React from 'react'
 
 
-function Chapters({ chapterInfo, openLesson }){
-  
-  let newChapter = chapterInfo.map(chapter => {
-    return <h4 key={Date.now() + Math.random()} onClick={openLesson}>{chapter}</h4>
-  })
+function Chapters({ getChapterData, chapterClicked }){
+    if(getChapterData === undefined || getChapterData.length === 0) {
+        return null;
+    }
+    
+    let chapters = getChapterData.map(chapter => {
+        return <h4 
+        key={Date.now() + Math.random()}
+        onClick={() => {
+            return chapterClicked(chapter.key2)
+        }}
+        >
+        {chapter.key}
+        </h4>
+    })
+
 
   return (
     <div className="containerChapters">
       <h2>Chapters</h2>
-      {newChapter}
+      {chapters}
     </div>
   )
 }
 
 export default Chapters
+
+/*
+
+*/

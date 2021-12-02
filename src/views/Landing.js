@@ -6,42 +6,28 @@ import Chapters from "./Chapters";
 import data from "../db.json";
 
 function Landing() {
-  const [chapterData, setChapterData] = useState([]);
-  const [lessonData, setLessonData] = useState([]);
+    const [chapterNr, setChapterNr] = useState([]);
 
-  function openLesson(lessonInput) {
-      if(lessonInput === undefined){
-          return null
-      }
-    console.log(lessonInput);
-    return setLessonData(lessonInput);
-  }
+    async function chaptersData() {
+        data.chapters.map(chapter => {
+            return chapter.chapterData.map(chapterEl => {
+                return setChapterNr((prevState) => [...prevState, {key: chapterEl.chapter, key2: chapterEl.lessons}]) 
+            })
+        })
+    }
 
-  function chapterChoosen() {
-    let newData = data.chapters?.map((dataEl) => {
-      let newLessons = dataEl.Lessons?.map((lesson) => {
-        let lessonsRender = (
-          <div>
-            <h2>{lesson.LessonNr}</h2>
-          </div>
-        );
-        return lessonsRender;
-      });
-      openLesson(newLessons);
-      return [dataEl.chapterNr, openLesson(newLessons)];
-    });
+    useEffect(() => {
+        chaptersData();
+    }, []);
 
-    return setChapterData(newData);
-  }
+    function chapterClicked(a){
+        console.log(a);
+    }
 
-  useEffect(() => {
-    chapterChoosen();
-  }, []);
-
-  return (
+    return (
     <div className="container">
-      <Chapters openLesson={chapterChoosen} chapterInfo={chapterData} />
-      <Lessons choosenLesson={lessonData} />
+      <Chapters chapterClicked={chapterClicked} getChapterData={chapterNr}/>
+      <Lessons />
     </div>
   );
 }
